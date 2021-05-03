@@ -28,29 +28,26 @@ class Gossip
     CSV.read("./db/gossip.csv").each_with_index do |csv_line, index|
       if (id == index + 1)
         gossips << Gossip.new(csv_line[0], csv_line[1])
-        # break
       end
       return gossips
     end
   end
 
-  # def self.update(id,author,content)
-  #   gossips = []
-	# 	CSV.read("./db/gossip.csv").each_with_index do |csv_line, index|
-	# 		if id.to_i == (index + 1) 
-	# 			gossips << [author, content]
-	# 		else
-	# 			gossips << [csv_line[0], csv_line[1]]
-	# 		end
-	# 	end
+  def self.update(id,author,content)
+    gossips = []
+		CSV.read("./db/gossip.csv").each_with_index do |csv_line, index|
+			if (id == index + 1) 
+				gossips << [csv_line[0], csv_line[1]]
+			end
+		end
 
-	# 	CSV.open("./db/gossip.csv", "w") do |csv| 
-	# 		gossips.each do |row|
-	# 			csv << row
-  #   end
-  # end
+		CSV.open("./db/gossip.csv", "w") do |csv| 
+			gossips.each do |row|
+				csv << row
+    end
+  end
 
-  # end
+  end
 
 
 end
