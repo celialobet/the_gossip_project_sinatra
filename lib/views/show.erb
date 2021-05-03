@@ -1,15 +1,16 @@
 <html>
   <head>
-    <title>PAGE POTIN</title>
+    <title>The Gossip Project</title>
   </head>
   <body>
-    <h1>PAGE POTIN</h1>
-    <h2>Voici la page du potin n°<%= params['id'] %> </h2>
-    <h4>Son auteur : <%= gossips.author %> 
-    </h4>
-    <h4>Le contenu du potin : <%= gossips.content%> </h4>    
+    <h1>Page potin</h1>
+    <% gossips.each do |gossip| %>
+      <p> Voici le potin n° <%= id%><br/>
+      Son auteur : <%= gossip.author %><br/>
+      Le contenu du potin : <%= gossip.content %>
+        </p>
+    <% end %>
 
-    <h3><a href="/">Lien pour revenir à la page des potins</a></h3>
 
   </body>
 </html>

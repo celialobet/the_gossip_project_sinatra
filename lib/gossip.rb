@@ -17,19 +17,21 @@ class Gossip
 
   def self.all
     all_gossips = []
-    CSV.read("db/gossip.csv").each do |csv_line|
+    CSV.read("./db/gossip.csv").each do |csv_line|
       all_gossips << Gossip.new(csv_line[0], csv_line[1]) 
     end
     return all_gossips
   end
-  
+
   def self.find(id)
-    id = id.to_i + 1
-    table = CSV.parse(File.read("db/gossip.csv"))
-    print table
-    puts
-    # table = CSV.table('db/gossip.csv')
-    puts table[id]
-    return table[id]
-  end
+    gossips = []
+    CSV.read("./db/gossip.csv").each_with_index do |csv_line, index|
+      if (id == index+1)
+        gossips << Gossip.new(csv_line[0], csv_line[1])
+        break
+          end
+        end
+        return gossips
+    end
+
 end
