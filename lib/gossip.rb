@@ -1,3 +1,5 @@
+require 'csv'
+
 class Gossip
 
   attr_reader :author, :content
@@ -12,5 +14,22 @@ class Gossip
       csv << [@author, @content]
     end
   end
+
+  def self.all
+    all_gossips = []
+    CSV.read("db/gossip.csv").each do |csv_line|
+      all_gossips << Gossip.new(csv_line[0], csv_line[1]) 
+    end
+    return all_gossips
+  end
   
+  def self.find(id)
+    id = id.to_i + 1
+    table = CSV.parse(File.read("db/gossip.csv"))
+    print table
+    puts
+    # table = CSV.table('db/gossip.csv')
+    puts table[id]
+    return table[id]
+  end
 end
