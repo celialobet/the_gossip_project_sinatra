@@ -39,14 +39,14 @@ class Gossip
 			if (id == index + 1) 
 				gossips << [csv_line[0], csv_line[1]]
 			end
+      return gossips
 		end
 
 		CSV.open("./db/gossip.csv", "w") do |csv| 
-			gossips.each do |row|
-				csv << row
+			gossips.each do |gossip|
+				csv << [gossip.author, gossip.content]
+      end
     end
-  end
-
   end
 
 
